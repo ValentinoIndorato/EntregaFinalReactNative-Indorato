@@ -7,7 +7,7 @@ import {
   FlatList,
 } from "react-native";
 import CardItem from "./CardItem";
-function ItemList({ data, onHandlerDelete, done, setDone}) {
+function ItemList({ data, onHandlerDelete,}) {
  
   return (
     <View style={styles.itemList}>
@@ -15,7 +15,7 @@ function ItemList({ data, onHandlerDelete, done, setDone}) {
       <FlatList
         data={data}
         keyExtractor={(item,index) => index}
-        renderItem={({ item, index }) => <CardItem item={item} index={index}  onHandlerDelete={()=>{onHandlerDelete(index)}} done={done} setDone={setDone}/>}
+        renderItem={({ item, index }) => <CardItem item={item} index={index}  onHandlerDelete={()=>{onHandlerDelete(index)}} />}
       />
     </View>
   );

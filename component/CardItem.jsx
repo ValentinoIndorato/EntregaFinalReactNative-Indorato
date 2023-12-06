@@ -1,14 +1,15 @@
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import { useState } from "react";
 import ModalDelete from "./ModalDelet";
-function CardItem({ item, index, onHandlerDelete, done, setDone }) {
+function CardItem({ item, index, onHandlerDelete, }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalType, setModalType] = useState(true);
-  
+  const [done, setDone] = useState(false);
+
 
   return (
     < >
-      <View style={styles.container}>
+      <View style={done===true ?styles.conteianerDone:styles.container}>
         <Text style={styles.h3}>Titulo </Text>      
         <Text style={styles.h4}>{item}</Text>        
         <View>
@@ -54,6 +55,15 @@ const styles = StyleSheet.create({
     alignItems:"center",
     marginTop:15,
   },
+  conteianerDone:{flexDirection: "row",
+  justifyContent: "space-between",
+  width: "25rem",
+  alignItems:"center",
+  marginTop:15,
+borderWidth:"0.2rem",
+  borderColor:"#747bff",
+  borderRadius: 5,
+  padding: 5,},
   button: {   
 
     gap:15

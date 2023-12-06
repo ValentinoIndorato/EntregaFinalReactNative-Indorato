@@ -4,7 +4,6 @@ import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import ItemList from "./component/ItemList";
 export default function App() {
   const [item, setItem] = useState("");
-  const [done, setDone] = useState(false);
   const ListItems = ["Rendir seminario", "Tesis", "Viaje a Mendoza"]; //ver cual de las dos opciones es mejor, si meter el ListItemes o meter el arra []
   const [listItems, setListItems] = useState([
     "Rendir seminario",
@@ -38,7 +37,7 @@ export default function App() {
       </View>
       <Text> {item}</Text>
 
-      <ItemList data={listItems} onHandlerDelete={onHandlerDelete} done={done} setDone={setDone} />
+      <ItemList data={listItems} onHandlerDelete={onHandlerDelete}  />
     </View>
   );
 }
