@@ -17,7 +17,7 @@ function ModalDelete({ modalVisible, setModalVisible, item,modalType,onHandlerDe
           <Button
             title={modalType===true?"Editar" : "Borrar"}
             color="#747bff"
-            onPress={() => {setModalVisible(false),onHandlerDelete()}}
+            onPress={() => {setModalVisible(false),( modalType===false&&onHandlerDelete())}}
           />
         </View>
       </Modal>
