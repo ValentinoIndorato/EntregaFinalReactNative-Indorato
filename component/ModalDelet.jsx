@@ -7,16 +7,17 @@ import {
   FlatList,
   Modal,
 } from "react-native";
-function ModalDelete({ modalVisible, setModalVisible, item }) {
+function ModalDelete({ modalVisible, setModalVisible, item,modalType,onHandlerDelete }) {
+  console.log(onHandlerDelete)
   return (
     <>
       <Modal visible={modalVisible} transparent={true} style={styles.modal}>
         <View style={styles.conteinerItem}>
           <Text style={styles.tex}>{item} </Text>
           <Button
-            title="Boton"
+            title={modalType===true?"Editar" : "Borrar"}
             color="#747bff"
-            onPress={() => setModalVisible(false)}
+            onPress={() => {setModalVisible(false),onHandlerDelete()}}
           />
         </View>
       </Modal>
@@ -32,15 +33,14 @@ const styles = StyleSheet.create({
   },
   conteinerItem: {
     flex: 1,
-    backgroundColor: "#2135479f",
+    backgroundColor:"#2135479f",
     alignItems: "center",
     justifyContent: "center",
   },
-  tex: {     
-    color:"#fff", 
-    fontSize:"1rem",
-    fontWeight: 600,   
-    
+  tex: {
+    color: "#fff",
+    fontSize: "1rem",
+    fontWeight: 600,
   },
 });
 export default ModalDelete;
