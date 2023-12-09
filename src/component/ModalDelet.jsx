@@ -7,8 +7,10 @@ import {
   FlatList,
   Modal,
 } from "react-native";
+
+
 function ModalDelete({ modalVisible, setModalVisible, item,modalType,onHandlerDelete }) {
-  console.log(onHandlerDelete)
+  
   return (
     <>
       <Modal visible={modalVisible} transparent={true} style={styles.modal}>
@@ -24,6 +26,8 @@ function ModalDelete({ modalVisible, setModalVisible, item,modalType,onHandlerDe
     </>
   );
 }
+
+
 const styles = StyleSheet.create({
   modal: {
     flex: 1,
@@ -39,8 +43,8 @@ const styles = StyleSheet.create({
   },
   tex: {
     color: "#fff",
-    fontSize: "1rem",
-    fontWeight: 600,
+    fontSize: 25,
+    // fontWeight: 600, me tira error preguntar porque
   },
 });
 export default ModalDelete;

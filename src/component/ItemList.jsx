@@ -7,6 +7,8 @@ import {
   FlatList,
 } from "react-native";
 import CardItem from "./CardItem";
+
+
 function ItemList({ data, onHandlerDelete,}) {
  
   return (
@@ -25,9 +27,9 @@ const styles = StyleSheet.create({
     backgroundColor: "fff",
   },
   h2: {
-    fontSize: "1.5rem",
-    marginBottom: "0.5rem",
-    fontWeight: 600,
+    fontSize: 25,
+    marginBottom: 2,
+  //  fontWeight: 600, me tira error preguntar porque
     color: "#213547",
   },
 });

@@ -1,8 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
-import ItemList from "./component/ItemList";
+import ItemList from "./src/component/ItemList";
+
+
 export default function App() {
+
+
   const [item, setItem] = useState("");
   const ListItems = ["Rendir seminario", "Tesis", "Viaje a Mendoza"]; //ver cual de las dos opciones es mejor, si meter el ListItemes o meter el arra []
   const [listItems, setListItems] = useState([
@@ -11,6 +15,10 @@ export default function App() {
     "Viaje a Mendoza",
     "",
   ]);
+  
+
+
+
   function onAddItem() {
     setListItems((current) => [...current, item]);
     setItem("");
@@ -50,9 +58,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   h1: {
-    fontSize: "2rem",
-    marginBottom: "0.5rem",
-    fontWeight: 600,
+    fontSize: 50,
+    marginBottom: 15,
+    // fontWeight: 600,  me tira error preguntar porque
   },
   addContainer: {
     flexDirection: "row",
