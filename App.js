@@ -1,81 +1,31 @@
-import { StatusBar } from "expo-status-bar";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Button,
+  Pressable,
+} from "react-native";
+import Home from "./src/screens/Home";
+import ListGoal from "./src/screens/ListGoal";
+import ListToDo from "./src/screens/ListToDo"
 import { useState } from "react";
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
-import ItemList from "./src/component/ItemList";
-
+import { useFonts } from "expo-font";
 
 export default function App() {
-
-
-  const [item, setItem] = useState("");
-  const ListItems = ["Rendir seminario", "Tesis", "Viaje a Mendoza"]; //ver cual de las dos opciones es mejor, si meter el ListItemes o meter el arra []
-  const [listItems, setListItems] = useState([
-    "Rendir seminario",
-    "Tesis",
-    "Viaje a Mendoza",
-    "",
-  ]);
-  
-
-
-
-  function onAddItem() {
-    setListItems((current) => [...current, item]);
-    setItem("");
-  }
-  function onHandlerDelete(index){
-    listItems.splice(index,1)
-    setListItems((current) => [...current]);
-  } 
-  
+ const [fontLoaded] =useFonts({RubikBubbles:require("./src/assets/RubikBubbles-Regular.ttf")})
+  const [changeScreen, setChangeScreen] = useState("home");
+  const [backHome, setBackHome] = useState("home");
+  if(!fontLoaded) return null
   return (
-    <View style={styles.container}>
-      <Text style={styles.h1}>Hola, Coder!!</Text>
-      <View style={styles.addContainer}>
-        <TextInput
-          placeholder="Tarea a realizar"
-          value={item}
-          onChangeText={(textItem) => {
-            setItem(textItem);
-          }}
-          style={styles.input}
-          focusable
-        />
-        <Button title="Agregar" onPress={onAddItem} color="#213547"  />
-      </View>
-      <Text> {item}</Text>
-
-      <ItemList data={listItems} onHandlerDelete={onHandlerDelete}  />
-    </View>
+    <>
+   
+    {changeScreen==="home" && <Home setChangeScreen={setChangeScreen} />}
+   {changeScreen===true && <ListToDo setChangeScreen={setChangeScreen} />}
+   {changeScreen===false &&<ListGoal setChangeScreen={setChangeScreen}/> }
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  h1: {
-    fontSize: 50,
-    marginBottom: 15,
-    // fontWeight: 600,  me tira error preguntar porque
-  },
-  addContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    alignSelf: "stretch",
-    justifyContent: "center",
-    // flex: 1, alignItems: 'center',
-    // justifyContent: 'center',
-    gap: 10,
-  },
-  input: {
-    borderWidth: 1,
-    color: "#747bff",
-    borderColor: "#747bff",
-    borderRadius: 5,
-    paddingLeft: 5,
-  },
-});
+
+
