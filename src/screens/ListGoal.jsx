@@ -8,15 +8,15 @@ import {
 } from "react-native";
 import { useState } from "react";
 
-function ListGoal({setChangeScreen}) {
+function ListGoal({navigation}) {
   return (
     <>
       <View style={styles.container}>
         <View style={styles.header}>
         <Text style={styles.h1}>Tus metas</Text>
-        <Pressable onPress={()=> {setChangeScreen("home")}}>
+        {/*<Pressable onPress={()=> {setChangeScreen("home")}}>
           <Text>volver</Text>
-        </Pressable>
+          </Pressable>*/}
         </View>
       </View>
     </>

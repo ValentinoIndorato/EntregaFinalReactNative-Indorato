@@ -10,17 +10,17 @@ import {
 import { useState } from "react";
 import { colors } from "../Global/color";
 import fondo from "../assets/rect234.png"//como lograr que sea svg
-function Home({setChangeScreen}) {
+function Home({navigation}) {
   return (
     <>
           <ImageBackground source={fondo} resizeMode="cover" style={styles.image} >
       <View style={styles.container}>
         <Text style={styles.h1}>Bienvenido</Text>
         <View >
-        <Pressable style={styles.Pressable} onPress={()=> {setChangeScreen(true)}}>
+        <Pressable style={styles.Pressable} onPress={()=> navigation.navigate("ListToDo")}>
           <Text>Sus tareas</Text>
         </Pressable>
-        <Pressable style={styles.Pressable} onPress={()=>{setChangeScreen(false)}}>
+        <Pressable style={styles.Pressable} onPress={()=>{ navigation.navigate("ListGoal")}}>
           <Text>Sus metas</Text>
         </Pressable>
         </View>

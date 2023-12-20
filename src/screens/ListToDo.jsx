@@ -5,7 +5,7 @@ import ItemList from "../component/ItemList";
 import{AntDesign }from "@expo/vector-icons"
 
 
-function ListToDo({setChangeScreen}){
+function ListToDo({navigation}){
     
   const [item, setItem] = useState("");
   const ListItems = ["Rendir seminario", "Tesis", "Viaje a Mendoza"]; //ver cual de las dos opciones es mejor, si meter el ListItemes o meter el arra []
@@ -30,9 +30,9 @@ function ListToDo({setChangeScreen}){
 return(
     <View style={styles.container}>
       <View style={styles.addContainer}>
-        <Pressable onPress={()=> {setChangeScreen("home")}}>
+       {/* <Pressable onPress={()=> {setChangeScreen("home")}}>
         <AntDesign name="back" size={24} color="black" />      
-        </Pressable>
+        </Pressable>*/}
         <Text style={styles.h1}>Tus tareas</Text>   
      </View>
       <View style={styles.addContainer}>
