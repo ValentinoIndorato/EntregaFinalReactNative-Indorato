@@ -2,7 +2,8 @@ import { useFonts } from "expo-font";
  import { NavigationContainer } from "@react-navigation/native";
  import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Navigator from "./src/navigation/Navigator";
-
+import { store } from './src/app/store'
+import { Provider } from 'react-redux'
  
 
 export default function App() {
@@ -13,7 +14,10 @@ export default function App() {
 
   return (
     <>
-      <Navigator/>
+   
+      <Provider store={store}>
+    <Navigator/>
+  </Provider>,
     </>
   );
 }
