@@ -9,7 +9,7 @@ import {
 import CardItem from "./CardItem";
 
 
-function ItemList({ data, onHandlerDelete,}) {
+function ItemList({ data, }) {
  
   return (
     <View style={styles.itemList}>
@@ -17,7 +17,7 @@ function ItemList({ data, onHandlerDelete,}) {
       <FlatList
         data={data}
         keyExtractor={(item,index) => index}
-        renderItem={({ item, index }) => <CardItem item={item} index={index}  onHandlerDelete={()=>{onHandlerDelete(index)}} />}
+        renderItem={({ item, index }) => <CardItem item={item} index={index}   />}
       />
     </View>
   );

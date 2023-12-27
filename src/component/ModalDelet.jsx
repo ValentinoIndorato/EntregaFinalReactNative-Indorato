@@ -7,10 +7,14 @@ import {
   FlatList,
   Modal,
 } from "react-native";
+import {  useDispatch } from 'react-redux'
+
+import {  onHandlerDelete } from "../features/Slice";
 
 
-function ModalDelete({ modalVisible, setModalVisible, item,modalType,onHandlerDelete }) {
-  
+function ModalDelete({ modalVisible, setModalVisible, item,modalType,index }) {
+  const dispatch=useDispatch()
+
   return (
     <>
       <Modal visible={modalVisible} transparent={true} style={styles.modal}>
@@ -19,7 +23,7 @@ function ModalDelete({ modalVisible, setModalVisible, item,modalType,onHandlerDe
           <Button
             title={modalType===true?"Editar" : "Borrar"}
             color="#747bff"
-            onPress={() => {setModalVisible(false),( modalType===false&&onHandlerDelete())}}
+            onPress={() => {setModalVisible(false),modalType===false&& dispatch(onHandlerDelete(index))}}
           />
         </View>
       </Modal>

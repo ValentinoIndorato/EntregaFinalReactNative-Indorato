@@ -3,10 +3,15 @@ import { useState } from "react";
 import { StyleSheet, Text, View, TextInput, Button,Pressable } from "react-native";
 import ItemList from "../component/ItemList";
 import{AntDesign }from "@expo/vector-icons"
-
+import { useSelector, useDispatch } from 'react-redux'
+import { onAddItem, onHandlerDelete } from "../features/Slice";
 
 function ListToDo({navigation}){
-    
+    const listItemsRedux = useSelector((state)=>state.toDo.value)
+    const dispatch=useDispatch()
+
+
+
   const [item, setItem] = useState("");
   const ListItems = ["Rendir seminario", "Tesis", "Viaje a Mendoza"]; //ver cual de las dos opciones es mejor, si meter el ListItemes o meter el arra []
   const [listItems, setListItems] = useState([
@@ -19,11 +24,11 @@ function ListToDo({navigation}){
 
 
 
-  function onAddItem() {
+  function onAddItem1() {
     setListItems((current) => [...current, item]);
     setItem("");
   }
-  function onHandlerDelete(index){
+  function onHandlerDelete1(index){
     listItems.splice(index,1)
     setListItems((current) => [...current]);
   } 
@@ -45,12 +50,12 @@ return(
           style={styles.input}
           focusable
         />
-        <Button title="Agregar" onPress={onAddItem} color="#213547"  />
+        <Button title="Agregar" onPress={()=>{dispatch(onAddItem(item)), console.log(listItemsRedux)}} color="#213547"  />
         
       </View>
       <Text> {item}</Text>
 
-      <ItemList data={listItems} onHandlerDelete={onHandlerDelete}  />
+      <ItemList data={listItemsRedux}   />
     
     </View>
 )

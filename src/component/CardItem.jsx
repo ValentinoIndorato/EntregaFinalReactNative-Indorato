@@ -3,7 +3,7 @@ import { useState } from "react";
 import ModalDelete from "./ModalDelet";
 
 
-function CardItem({ item, index, onHandlerDelete, }) {
+function CardItem({ item, index,  }) {
   
   const [modalVisible, setModalVisible] = useState(false);
   const [modalType, setModalType] = useState(true);
@@ -44,7 +44,7 @@ function CardItem({ item, index, onHandlerDelete, }) {
         setModalVisible={setModalVisible}
         item={item}
         modalType={modalType}
-        onHandlerDelete={onHandlerDelete}
+        index={index}
        
       />
     </>
