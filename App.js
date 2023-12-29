@@ -17,7 +17,7 @@ export default function App() {
    
       <Provider store={store}>
     <Navigator/>
-  </Provider>,
+  </Provider>
     </>
   );
 }
