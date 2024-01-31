@@ -9,22 +9,28 @@ import {
 import CardItem from "./CardItem";
 
 
-function ItemList({ data, }) {
- 
+function ItemList({ navigation, route,data }) {
+  console.log(route.params)
   return (
     <View style={styles.itemList}>
       <Text style={styles.h2}>Lista de tareas</Text>
-      <FlatList
+      {data && <FlatList
         data={data}
         keyExtractor={(item,index) => index}
         renderItem={({ item, index }) => <CardItem item={item} index={index}   />}
-      />
+      />}
+      {route.params&& <FlatList
+        data={route.params.item}
+        keyExtractor={(item,index) => index}
+        renderItem={({ item, index }) => <CardItem item={item} index={index}   />}
+      />}
     </View>
   );
 }
 const styles = StyleSheet.create({
   itemList: {
     backgroundColor: "fff",
+    height:300 // esto le da el tamaño y corrige el erro de que un elemento no se ve por estar tapado por la barra de navegacion
   },
   h2: {
     fontSize: 25,

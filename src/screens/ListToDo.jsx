@@ -5,6 +5,8 @@ import ItemList from "../component/ItemList";
 import{AntDesign }from "@expo/vector-icons"
 import { useSelector, useDispatch } from 'react-redux'
 import { onAddItem, onHandlerDelete } from "../features/Slice";
+import ListTabNavigator from "../navigation/ListTabNavigator";
+
 
 function ListToDo({navigation}){
     const listItemsRedux = useSelector((state)=>state.toDo.value)
@@ -33,7 +35,7 @@ function ListToDo({navigation}){
     setListItems((current) => [...current]);
   } 
 return(
-    <View style={styles.container}>
+   <View style={styles.container}>
       <View style={styles.addContainer}>
        {/* <Pressable onPress={()=> {setChangeScreen("home")}}>
         <AntDesign name="back" size={24} color="black" />      
@@ -55,8 +57,9 @@ return(
       </View>
       <Text> {item}</Text>
 
-      <ItemList data={listItemsRedux}   />
-    
+      {/*<ItemList data={listItemsRedux}   />*/}
+      
+     <View style={styles.List}><ListTabNavigator item={ listItemsRedux} /></View>
     </View>
 )
 }
@@ -90,4 +93,9 @@ const styles = StyleSheet.create({
       borderRadius: 5,
       paddingLeft: 5,
     },
+    List:{
+      width: 350,
+      height: 500,
+      backgroundColor: "#fff",
+    }
   });
