@@ -7,10 +7,11 @@ import {
   FlatList,
 } from "react-native";
 import CardItem from "./CardItem";
+import { useSelector, useDispatch } from 'react-redux'
 
 
 function ItemList({ navigation, route,data }) {
-  console.log(route.params)
+  const listItemsRedux = useSelector((state)=>state.toDo.value)
   return (
     <View style={styles.itemList}>
       <Text style={styles.h2}>Lista de tareas</Text>
@@ -19,8 +20,8 @@ function ItemList({ navigation, route,data }) {
         keyExtractor={(item,index) => index}
         renderItem={({ item, index }) => <CardItem item={item} index={index}   />}
       />}
-      {route.params&& <FlatList
-        data={route.params.item}
+      {<FlatList
+        data={listItemsRedux}
         keyExtractor={(item,index) => index}
         renderItem={({ item, index }) => <CardItem item={item} index={index}   />}
       />}
