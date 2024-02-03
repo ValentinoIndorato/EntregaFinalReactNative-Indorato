@@ -9,6 +9,7 @@ const Tab = createMaterialTopTabNavigator();
 function ListTabNavigator({ navigation,item}){
     console.log(item)
 return(
+  
     <Tab.Navigator>
     <Tab.Screen name="ListToDo" component={ItemList} initialParams={{item}} />
     <Tab.Screen name="Settings" component={ListGoal} />

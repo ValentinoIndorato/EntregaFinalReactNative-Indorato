@@ -11,7 +11,7 @@ function CardItem({ item, index,  }) {
 
 
   return (
-    < >
+    <>
       <View style={done===true ?styles.conteianerDone:styles.container}>
         <Text style={styles.h3}>Titulo </Text>      
         <Text style={styles.h4}>{item}</Text>        
