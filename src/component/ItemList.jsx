@@ -26,18 +26,21 @@ function ItemList({ navigation, route,data }) {
         renderItem={({ item, index }) => <CardItem item={item} index={index}   />}
       />}
     </View>
-  );
+  )
 }
 const styles = StyleSheet.create({
   itemList: {
     backgroundColor: "fff",
-    height:300 // esto le da el tamaño y corrige el erro de que un elemento no se ve por estar tapado por la barra de navegacion
+    flex:1,
+    
+    //height:400 // esto le da el tamaño y corrige el erro de que un elemento no se ve por estar tapado por la barra de navegacion
   },
   h2: {
     fontSize: 25,
     marginBottom: 2,
   //  fontWeight: 600, me tira error preguntar porque
     color: "#213547",
+    backgroundColor:"blue"
   },
 });
 

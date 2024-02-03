@@ -94,8 +94,7 @@ const styles = StyleSheet.create({
       paddingLeft: 5,
     },
     List:{
-      width: 350,
-      height: 500,
-      backgroundColor: "#fff",
+flex:1,      backgroundColor: "#fff",      width:"100%",
+
     }
   });
