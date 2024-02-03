@@ -7,6 +7,7 @@ import {
   Pressable,
 } from "react-native";
 import { useState } from "react";
+import PruebaFire from "../PruebaFire";
 
 function ListGoal({navigation}) {
   return (
@@ -17,7 +18,10 @@ function ListGoal({navigation}) {
         {/*<Pressable onPress={()=> {setChangeScreen("home")}}>
           <Text>volver</Text>
           </Pressable>*/}
+                  
+
         </View>
+        <PruebaFire/>
       </View>
     </>
   );
