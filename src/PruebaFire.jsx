@@ -8,12 +8,13 @@ import {
   Button,
   FlatList,
 } from "react-native";
+import { useGetListToDoQuery } from "./app/services/listToDoServices";
 const url = "https://reactnative-296f7-default-rtdb.firebaseio.com/";
 
 const PruebaFire = () => {
   const [data1, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-
+const {data:listToDo} = useGetListToDoQuery()
   const Products = async () => {
     const respuesta = await fetch(url + "product.json");
     const data = await respuesta.json();
@@ -23,16 +24,19 @@ const PruebaFire = () => {
   useEffect(() => {
     Products();
   }, []);
+
+
   return (
     <>
       <View style={styles.itemList}>
         {!loading && (
           <FlatList
-            data={data1}
+            data={listToDo}
             keyExtractor={(item, id) => id}
             renderItem={({ item, index }) => (
               <View style={styles.List}>               
-                <Text style={styles.h2}>{item.brand} </Text>
+                <Text style={styles.h2}>{item.brand
+} </Text>
               </View>
             )}
           />
