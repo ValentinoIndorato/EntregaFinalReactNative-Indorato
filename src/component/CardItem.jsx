@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import { useState } from "react";
 import ModalDelete from "./ModalDelet";
+import ModalEdit from "./ModalEdit";
 
 
 function CardItem({ item, index,  }) {
   
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalEditVisible, setModalEditVisible] = useState(false);
   const [modalType, setModalType] = useState(true);
   const [done, setDone] = useState(false);
 
@@ -25,7 +27,7 @@ function CardItem({ item, index,  }) {
           />
           <Button
             title="Editar"
-            onPress={() => {setModalVisible(true),setModalType(true)}}//preguntar si el afecta que sea con llaves o corchetes
+            onPress={() => {setModalEditVisible(true),setModalType(true)}}//preguntar si el afecta que sea con llaves o corchetes
             color="#213547"
             disabled={item === "" && true}
             style={styles.button}
@@ -47,6 +49,11 @@ function CardItem({ item, index,  }) {
         index={index}
        
       />
+      {<ModalEdit modalVisible={modalEditVisible}
+        setModalVisible={setModalEditVisible}
+        item={item}
+        modalType={modalType}
+        index={index}/>}
     </>
   );
 }

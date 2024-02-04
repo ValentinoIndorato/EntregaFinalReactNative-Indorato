@@ -19,11 +19,11 @@ function ModalDelete({ modalVisible, setModalVisible, item,modalType,index }) {
     <>
       <Modal visible={modalVisible} transparent={true} style={styles.modal}>
         <View style={styles.conteinerItem}>
-          <Text style={styles.tex}>{item} </Text>
+          <Text style={styles.tex}>{item}</Text>
           <Button
             title={modalType===true?"Editar" : "Borrar"}
             color="#747bff"
-            onPress={() => {setModalVisible(false),modalType===false&& dispatch(onHandlerDelete(index))}}
+            onPress={() => {setModalVisible(false),modalType===false&& dispatch(onHandlerDelete())}}
           />
         </View>
       </Modal>
