@@ -14,7 +14,8 @@ const url = "https://reactnative-296f7-default-rtdb.firebaseio.com/";
 const PruebaFire = () => {
   const [data1, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-const {data:listToDo} = useGetListToDoQuery()
+const {data:listToDo, isLoading, error} = useGetListToDoQuery()
+{!isLoading && console.log(listToDo)}
   const Products = async () => {
     const respuesta = await fetch(url + "product.json");
     const data = await respuesta.json();
@@ -35,7 +36,7 @@ const {data:listToDo} = useGetListToDoQuery()
             keyExtractor={(item, id) => id}
             renderItem={({ item, index }) => (
               <View style={styles.List}>               
-                <Text style={styles.h2}>{item.brand
+                <Text style={styles.h2}>{item.title
 } </Text>
               </View>
             )}
