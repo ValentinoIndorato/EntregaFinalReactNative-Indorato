@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { useState } from "react";
 import PruebaFire from "../PruebaFire";
+import ListGoals from "../component/ListGoals";
 
 function ListGoal({navigation}) {
   return (
@@ -21,7 +22,7 @@ function ListGoal({navigation}) {
                   
 
         </View>
-        <PruebaFire/>
+        <ListGoals/>
       </View>
     </>
   );

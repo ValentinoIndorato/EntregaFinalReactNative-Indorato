@@ -6,13 +6,14 @@ import{AntDesign }from "@expo/vector-icons"
 import { useSelector, useDispatch } from 'react-redux'
 import { onAddItem, onHandlerDelete } from "../features/Slice";
 import ListTabNavigator from "../navigation/ListTabNavigator";
+import { usePostOneToDoMutation, useUpdateOneTodoMutation } from "../app/services/listToDoServices";
 
 
 function ListToDo({navigation}){
     const listItemsRedux = useSelector((state)=>state.toDo.value)
     const dispatch=useDispatch()
-
-
+  const[triggerAddOneToDo]  =usePostOneToDoMutation()
+const [upDateOneToDo]  =useUpdateOneTodoMutation()
 
   const [item, setItem] = useState("");
   const ListItems = ["Rendir seminario", "Tesis", "Viaje a Mendoza"]; //ver cual de las dos opciones es mejor, si meter el ListItemes o meter el arra []
@@ -52,7 +53,7 @@ return(
           style={styles.input}
           focusable
         />
-        <Button title="Agregar" onPress={()=>{dispatch(onAddItem(item)), console.log(listItemsRedux)}} color="#213547"  />
+        <Button title="Agregar" onPress={()=>{dispatch(onAddItem(item)), console.log(listItemsRedux),triggerAddOneToDo({item})/*tiene que ser un objeto*/}} color="#213547"  />
         
       </View>
       <Text> {item}</Text>

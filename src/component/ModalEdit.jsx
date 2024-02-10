@@ -11,10 +11,13 @@ import {
   
   import {  onHandlerEdit } from "../features/Slice";
 import { useState } from "react";
+import { useUpdateOneTodoMutation } from "../app/services/listToDoServices";
   
   
   function ModalEdit({ modalVisible, setModalVisible, item,modalType,index }) {
     const dispatch=useDispatch()
+    const [upDateOneToDo]  =useUpdateOneTodoMutation()
+
     const [editText, setEditText] = useState("");
 
     return (
@@ -35,7 +38,7 @@ import { useState } from "react";
                      <Button style={styles.button}
               title={modalType===true?"Editar" : "Borrar"}
               color="#747bff"
-              onPress={() => {setModalVisible(false),modalType===true&& dispatch(onHandlerEdit({text: editText === "" ? item : editText, index:index}))}}
+              onPress={() => {setModalVisible(false),modalType===true&& dispatch(onHandlerEdit({text: editText === "" ? item : editText, index:index})),upDateOneToDo({editText})}}
             />
 
           </View>
