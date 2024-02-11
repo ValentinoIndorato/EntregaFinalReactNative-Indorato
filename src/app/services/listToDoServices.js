@@ -13,20 +13,26 @@ export const listTodoApi = createApi({
        // query:(id)=>`product/${id}.json`,
     }),
    postOneToDo: builder.mutation({
-      query:(data)=>( {
-        
-          url: `ListToDo/10.json`,// funciona asignandole despues de la barra algo ese va ser como su id
-          method: 'POST',
-          body:data
+      query(data) {
+        const { id, ...body } = data
+       
+       return{ url: `ListToDo/${id}.json`,// funciona asignandole despues de la barra algo ese va ser como su id
+          method: 'PUT',//con el metodo post me genera la id automatica y hace el proble de un objeto dentro de otro con el metodo put no
+          body:data,
+        }
       //Lo que se envia debe ser un objeto al menos, si es un string solo no lo toma fire
-      }),
-   
+      //PROBLEMA, cuando agrego el objeto se crea dentro de otro objeto por ende me queda
+    // id(que le asigno yo):{ id(que leasigna fire){el objeto que le mando}} PREGUNTAR A CRIS
+      }
+      
+    
+      
     }),
     updateOneTodo: builder.mutation({
       query(data) {
         const { id, ...body } = data
         return {
-          url: `ListToDo/0.json`,
+          url: `ListToDo/${id}.json`,
           method: 'PUT',
           body:data,
         }},
