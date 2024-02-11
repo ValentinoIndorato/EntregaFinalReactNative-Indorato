@@ -6,15 +6,16 @@ export const listTodoApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: base_url }),
   endpoints: (builder) => ({
     getListToDo: builder.query({
-      query: () => `ListGoals.json`,
+      query: () => `ListToDo.json`,
     }),
     getOneToDo: builder.query({
-        query:(id)=>`product/${id}.json`,
+      query: () => `ListToDo.json`,
+       // query:(id)=>`product/${id}.json`,
     }),
    postOneToDo: builder.mutation({
       query:(data)=>( {
         
-          url: `ListGoals/10.json`,// funciona asignandole despues de la barra algo ese va ser como su id
+          url: `ListToDo/10.json`,// funciona asignandole despues de la barra algo ese va ser como su id
           method: 'POST',
           body:data
       //Lo que se envia debe ser un objeto al menos, si es un string solo no lo toma fire
@@ -25,7 +26,7 @@ export const listTodoApi = createApi({
       query(data) {
         const { id, ...body } = data
         return {
-          url: `ListGoals/0.json`,
+          url: `ListToDo/0.json`,
           method: 'PUT',
           body:data,
         }},
