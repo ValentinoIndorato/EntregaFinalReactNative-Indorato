@@ -6,6 +6,7 @@ import {
   Button,
   FlatList,
   Modal,
+  TouchableOpacity
 } from "react-native";
 import {  useDispatch } from 'react-redux'
 
@@ -19,6 +20,8 @@ function ModalDelete({ modalVisible, setModalVisible, item,modalType,index }) {
     <>
       <Modal visible={modalVisible} transparent={true} style={styles.modal}>
         <View style={styles.conteinerItem}>
+        <TouchableOpacity onPress={() => setModalVisible(false)}><Text >adsasdasad </Text></TouchableOpacity>
+
           <Text style={styles.tex}>{item}</Text>
           <Button
             title={modalType===true?"Editar" : "Borrar"}
@@ -35,7 +38,6 @@ function ModalDelete({ modalVisible, setModalVisible, item,modalType,index }) {
 const styles = StyleSheet.create({
   modal: {
     flex: 1,
-
     alignItems: "center",
     justifyContent: "center",
   },
