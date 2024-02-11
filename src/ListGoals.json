@@ -63,7 +63,7 @@
             "done": false
         }
       ],         
-      "category": "Regalos a terceros",
+      "category": ["Regalos a terceros"],
       "thumbnail": "",
       "images": [],
       "done": false
