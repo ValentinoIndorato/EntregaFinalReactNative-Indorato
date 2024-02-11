@@ -11,8 +11,8 @@ function ListTabNavigator({ navigation,item}){
 return(
   
     <Tab.Navigator>
-    <Tab.Screen name="ListToDo" component={ItemList} initialParams={{item}} />
-    <Tab.Screen name="Settings" component={ListGoal} />
+    <Tab.Screen name="Para hacer" component={ItemList}  />
+    <Tab.Screen name="Hechas" component={ItemList} />
   </Tab.Navigator>
 )
 }
