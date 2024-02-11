@@ -4,7 +4,7 @@ import ModalDelete from "./ModalDelet";
 import ModalEdit from "./ModalEdit";
 
 
-function CardItem({ item, index,  }) {
+function CardItem({ item, index,isLoading  }) {
   
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEditVisible, setModalEditVisible] = useState(false);
@@ -14,9 +14,9 @@ function CardItem({ item, index,  }) {
 
   return (
     <>
-      <View style={done===true ?styles.conteianerDone:styles.container}>
+  <View style={done===true ?styles.conteianerDone:styles.container}>
         <Text style={styles.h3}>Titulo </Text>      
-        <Text style={styles.h4}>{item}</Text>        
+        <Text style={styles.h4}>{item.title? item.title:item}</Text>        
         <View>
         <Button
             title={done===true ?"Realizada": "Por realizar"}
@@ -54,6 +54,7 @@ function CardItem({ item, index,  }) {
         item={item}
         modalType={modalType}
         index={index}/>}
+       
     </>
   );
 }
