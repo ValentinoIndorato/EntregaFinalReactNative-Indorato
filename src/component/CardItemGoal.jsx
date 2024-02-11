@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
     List: {
         backgroundColor: "blue",
         flex: 1,
-        padding: 10,
+        paddingVertical: 2,
+        paddingHorizontal: 15,
     },
     h2: {
         fontSize: 25,

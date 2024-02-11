@@ -21,13 +21,16 @@ function Navigator() {
     <>
       <NavigationContainer>
         <Tab.Navigator 
+       
               initialRouteName="Home"
         screenOptions={{
         tabBarActiveTintColor: 'black',
-      }}>
+        headerShown:false
+      }
+      }>
           <Tab.Screen options={{
             tabBarIcon:({color})=> <MaterialCommunityIcons name="format-list-text" size={24} color={color} />
-          }} name="ListToDo" component={ListToDo} />
+          }} name="Tus tareas" component={ListToDo} />
             <Tab.Screen
           options={{
             tabBarIcon:({color})=> <AntDesign name="aliwangwang-o1" size={24} color={color} />
@@ -36,7 +39,7 @@ function Navigator() {
           options={{
             tabBarIcon:({color})=>
             <Foundation name="target" size={24} color={color} />
-          }} name="ListGoal" component={ListGoal} />         
+          }} name="Tus metas" component={ListGoal} />         
         </Tab.Navigator>
       </NavigationContainer>
     </>
