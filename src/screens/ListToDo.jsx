@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { StyleSheet, Text, View, TextInput, Button,Pressable } from "react-native";
+import { StyleSheet, Text, View, TextInput, Button,Pressable,SafeAreaView } from "react-native";
 import ItemList from "../component/ItemList";
 import{AntDesign }from "@expo/vector-icons"
 import { useSelector, useDispatch } from 'react-redux'

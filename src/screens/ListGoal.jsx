@@ -15,13 +15,23 @@ function ListGoal({navigation}) {
     <>
       <View style={styles.container}>
         <View style={styles.header}>
-        <Text style={styles.h1}>Tus metas</Text>
+        <Text style={styles.h1}>Tus metas</Text>        
         {/*<Pressable onPress={()=> {setChangeScreen("home")}}>
           <Text>volver</Text>
-          </Pressable>*/}
-                  
-
+          </Pressable>*/}         
         </View>
+        <View style={styles.header}><TextInput
+          placeholder="Tarea a realizar"
+          value="item"
+          onChangeText={(textItem) => {
+           
+          }}          
+          focusable
+        />
+        <Pressable onPress={()=> {setChangeScreen("home")}}>
+          <Text>agregar</Text>
+          </Pressable></View>
+        
         <ListGoals/>
       </View>
     </>
