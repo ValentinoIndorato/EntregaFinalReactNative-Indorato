@@ -8,24 +8,22 @@ import {
     Button,
     FlatList,
 } from "react-native";
-import { useGetListToDoQuery } from "../app/services/listToDoServices";
+import CardItemGoal from "./CardItemGoal";
+import { useGetListGoalsQuery } from "../app/services/listGoalsServices";
 
 const ListGoals = () => {
-    const { data: listToDo, isLoading, error } = useGetListToDoQuery()
-    { !isLoading && console.log(listToDo) }
+    const { data: listGoals, isLoading, error } = useGetListGoalsQuery()
+    { !isLoading && console.log(listGoals) }
 
     return (
         <>
             <View style={styles.itemList}>
                 {!isLoading && (
                     <FlatList
-                        data={listToDo}
+                        data={listGoals}
                         keyExtractor={(item, id) => id}
                         renderItem={({ item, index }) => (
-                            item  !== null && <View style={styles.List}>
-                                <Text style={styles.h2}>{item.title
-                                } </Text>
-                            </View>
+                            <CardItemGoal item={item} index={index} />
                         )}
                     />
                 )}
@@ -37,17 +35,7 @@ const ListGoals = () => {
 export default ListGoals;
 const styles = StyleSheet.create({
     itemList: {
-        backgroundColor: "red",
-        height: 300, 
-    },
-    List: {
-        backgroundColor: "blue",
-        height: 50, 
-    },
-    h2: {
-        fontSize: 25,
-        marginBottom: 2,
-        color: "black",
-        backgroundColor: "green",
-    },
+        flex: 1,
+        width:"100%",
+    },    
 });
