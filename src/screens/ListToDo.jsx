@@ -16,18 +16,17 @@ function ListToDo({ navigation }) {
   const [upDateOneToDo] = useUpdateOneTodoMutation()
 
   const [item, setItem] = useState("");
-  const ListItems = ["Rendir seminario", "Tesis", "Viaje a Mendoza"]; //ver cual de las dos opciones es mejor, si meter el ListItemes o meter el arra []
+const newToDo ={ id: Date.now(), title: item, done: false }
+
+  //--------------------------------------------------
+  const ListItems = ["Rendir seminario", "Tesis", "Viaje a Mendoza"]; //ver cual de las dos opciones es mejor, si meter el ListItemes o meter el arra []  
   const [listItems, setListItems] = useState([
     "Rendir seminario",
     "Tesis",
     "Viaje a Mendoza",
     "",
   ]);
-
-
-
-
-  function onAddItem1() {
+    function onAddItem1() {
     setListItems((current) => [...current, item]);
     setItem("");
   }
@@ -46,14 +45,14 @@ function ListToDo({ navigation }) {
       <View style={styles.addContainer}>
         <TextInput
           placeholder="Tarea a realizar"
-          value={item}
+          value={newToDo}
           onChangeText={(textItem) => {
             setItem(textItem);
           }}
           style={styles.input}
           focusable
         />
-        <Button title="Agregar" onPress={() => { dispatch(onAddItem(item)), console.log(listItemsRedux), triggerAddOneToDo({ item })/*tiene que ser un objeto*/ }} color="#213547" />
+        <Button title="Agregar" onPress={item !== "" && (() => { dispatch(onAddItem(item)), console.log(listItemsRedux), triggerAddOneToDo(newToDo)/*tiene que ser un objeto*/ })} color="#213547" />
 
       </View>
       <Text> {item}</Text>
