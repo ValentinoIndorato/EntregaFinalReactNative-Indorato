@@ -10,29 +10,37 @@ import { useState } from "react";
 import PruebaFire from "../PruebaFire";
 import ListGoals from "../component/ListGoals";
 
-function ListGoal({navigation}) {
+function ListGoal({ navigation }) {
   return (
     <>
       <View style={styles.container}>
         <View style={styles.header}>
-        <Text style={styles.h1}>Tus metas</Text>        
-        {/*<Pressable onPress={()=> {setChangeScreen("home")}}>
+          <Text style={styles.h1}>Tus metas</Text>
+          {/*<Pressable onPress={()=> {setChangeScreen("home")}}>
           <Text>volver</Text>
-          </Pressable>*/}         
+          </Pressable>*/}
         </View>
-        <View style={styles.header}><TextInput
-          placeholder="Tarea a realizar"
-          value="item"
-          onChangeText={(textItem) => {
-           
-          }}          
-          focusable
-        />
-        <Pressable onPress={()=> {setChangeScreen("home")}}>
-          <Text>agregar</Text>
-          </Pressable></View>
+        <View style={styles.add}>
+          <View  style={styles.addFazt}>
+          <TextInput
+           style={styles.input}
+            placeholder="Tarea a realizar"
+            value="item"
+            onChangeText={(textItem) => {
+
+            }}
+            focusable
+          /> 
+           <Pressable onPress={() => { setChangeScreen("home") }}>
+            <Text>agregar rapido</Text>
+          </Pressable>
+          </View>
         
-        <ListGoals/>
+          <Pressable onPress={() => { setChangeScreen("home") }}>
+            <Text>agregar detallado</Text>
+          </Pressable>
+        </View>
+        <ListGoals />
       </View>
     </>
   );
@@ -44,19 +52,30 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "top",
-    
+
   },
-   header: {
+  header: {
     flexDirection: "row",
     alignItems: "center",
     alignSelf: "stretch",
-    justifyContent: "center",    
+    justifyContent: "center",
     gap: 10,
   },
   h1: {
     fontSize: 50,
-    marginBottom: 15, 
-    fontFamily:"RubikBubbles"
+    marginBottom: 15,
+    fontFamily: "RubikBubbles"
   },
- 
+  addFazt:{
+    flexDirection: "row",
+    backgroundColor:"beige"
+  },
+  input: {
+    borderWidth: 1,
+    color: "#747bff",
+    borderColor: "#747bff",
+    borderRadius: 5,
+    paddingLeft: 5,
+  },
+
 });
