@@ -14,10 +14,10 @@ export const listTodoApi = createApi({
     getOneToDo: builder.query({
       //query: () => `ListToDo.json`,
        //query:(id)=>`ListToDo/${id}.json`,
-       query:(id)=>`ListToDo.json?orderBy="done"&equalTo=${id}`,
+       query:(done)=>`ListToDo.json?orderBy="done"&equalTo=${done}`,
       providesTags: ['Post'],
 
-    }),
+    }),   
    postOneToDo: builder.mutation({
       query(data) {
         const { id, ...body } = data

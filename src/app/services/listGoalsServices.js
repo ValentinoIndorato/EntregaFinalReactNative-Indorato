@@ -4,12 +4,16 @@ import { base_url } from '../../firabase/db'
 export const ListGoalsApi = createApi({
   reducerPath: 'ListGoalsApi',
   baseQuery: fetchBaseQuery({ baseUrl: base_url }),
+  tagTypes: ['Post'],
+
   endpoints: (builder) => ({
     getListGoals: builder.query({
       query: () => `ListGoals.json`,
     }),
     getOneGoal: builder.query({
-        query:(id)=>`product/${id}.json`,
+      query:(id)=>`ListGoals.json?orderBy="id"&equalTo=${id}`,
+      providesTags: ['Post'],
+
     }),
    postOneGoal: builder.mutation({
       query:(data)=>( {
@@ -27,6 +31,8 @@ export const ListGoalsApi = createApi({
           url: `ListGoals/0.json`,
           method: 'PUT',
           body:data,
+          invalidatesTags: ['Post'],
+
         }},
     })
   }),
