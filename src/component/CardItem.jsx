@@ -5,18 +5,18 @@ import ModalEdit from "./ModalEdit";
 
 
 function CardItem({ item, index, isLoading }) {
-
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEditVisible, setModalEditVisible] = useState(false);
   const [modalType, setModalType] = useState(true);
   const [done, setDone] = useState(false);
   const {title, description, category,  id}=item
 
+
   return (
     <>
       <View style={done === true ? styles.conteianerDone : styles.container}>
         {/*        <Text style={styles.h3}>Titulo </Text>  */}
-        <View style={styles.title}><Text style={styles.h4}>{title ? title : item}</Text>
+        <View style={styles.title}><Text style={styles.h4}>{title ? title : "title"}</Text>
         <Text style={styles.h3} numberOfLines={1} ellipsizeMode="tail">{description && description } </Text></View>
         
         <View style={styles.buttons}>
