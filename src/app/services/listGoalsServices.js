@@ -9,6 +9,7 @@ export const ListGoalsApi = createApi({
   endpoints: (builder) => ({
     getListGoals: builder.query({
       query: () => `ListGoals.json`,
+      providesTags: ['Post'],
     }),
     getOneGoal: builder.query({
       query:(id)=>`ListGoals.json?orderBy="id"&equalTo=${id}`,
@@ -25,15 +26,12 @@ export const ListGoalsApi = createApi({
    
     }),
     updateOneGoal: builder.mutation({
-      query(data) {
-        const { id, ...body } = data //revisar pq el body no se usa
-        return {
-          url: `ListGoals/0.json`,
-          method: 'PUT',
-          body:data,
-          invalidatesTags: ['Post'],
-
-        }},
+      query:(data)=> ({    
+        url: `ListGoals/${data.id}.json`,
+        method: 'PUT',
+        body:data,
+      }),             
+      invalidatesTags: ['Post'],  
     })
   }),
 })
