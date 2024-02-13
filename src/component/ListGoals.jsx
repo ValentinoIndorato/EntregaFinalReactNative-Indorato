@@ -9,27 +9,39 @@ import {
     FlatList,
 } from "react-native";
 import CardItemGoal from "./CardItemGoal";
-import { useGetListGoalsQuery } from "../app/services/listGoalsServices";
+import { useGetListGoalsQuery, useGetOneGoalQuery } from "../app/services/listGoalsServices";
 import { List } from 'react-native-paper';
 import { Foundation } from '@expo/vector-icons';
+import { useGetListToDoQuery } from "../app/services/listToDoServices";
 
 const ListGoals = () => {
-    const { data: listGoals, isLoading, error } = useGetListGoalsQuery()
-
+    const { data: listGoalsData, isLoading: listGoalsLoading, error: listGoalsError } = useGetListGoalsQuery();
+const { data: oneGoalData, isLoading: oneGoalLoading, error: oneGoalError } = useGetOneGoalQuery();
     const [expanded, setExpanded] = useState(true);
     const handlePress = () => setExpanded(!expanded);
-
+    const {data:ListToDO, isLoading, error} =useGetListToDoQuery()
+   //const toDoList=["G-1"]
+   const filterTasksForListToDo = (toDoList)=> ListToDO.filter((element) => toDoList.includes(element.id))
+//console.log(filterTasksForListToDo)
     return (
         <><View style={styles.itemList}>
             <List.Section >
-                {!isLoading && <FlatList
-                    data={listGoals}
+                {!listGoalsLoading && !isLoading && 
+                <FlatList
+                    data={listGoalsData}
                     keyExtractor={(item, id) => id}
                     renderItem={({ item, index }) => (
                         <List.Accordion
                             title={item.title}
                             left={props => <Foundation name="target" size={24} color="black" {...props} /> }>
-                            <List.Item title="First item" />
+                           {/* *informacion de otras opciones mas abajos    */}
+                           {item.toDoList &&<FlatList
+                            data={filterTasksForListToDo(item.toDoList)}
+                            keyExtractor={(item, id) => id}
+                            renderItem={({ item, index }) => (
+                                <List.Item title={item.title} />
+                            )}
+                             />}
                             <List.Item title="Second item" />
                         </List.Accordion>
                     )}
@@ -57,3 +69,9 @@ const styles = StyleSheet.create({
         width: "100%",
     },
 });
+{/*
+ {item.toDoList &&(filterTasksForListToDo(item.toDoList).map((element) => <List.Item key={element.id} title={element.title} />))}
+ {item.toDoList &&console.log(ListToDO.filter((element) => item.toDoList.includes(element.id)))}
+ <List.Item title={item.toDoList?item.toDoList[0].title:"First item"} />
+                            
+*/}
