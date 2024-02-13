@@ -1,12 +1,14 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { StyleSheet, Text, View, TextInput, Button, Pressable, SafeAreaView } from "react-native";
+import { StyleSheet, Text, View, TextInput, Button, Pressable, SafeAreaView,Switch } from "react-native";
 import ItemList from "../component/ItemList";
 import { AntDesign } from "@expo/vector-icons"
 import { useSelector, useDispatch } from 'react-redux'
 import { onAddItem, onHandlerDelete } from "../features/Slice";
 import ListTabNavigator from "../navigation/ListTabNavigator";
 import { usePostOneToDoMutation, useUpdateOneTodoMutation } from "../app/services/listToDoServices";
+import ModalNewToDo from "../component/ModalNewToDo";
+import { useMutation, queryCache } from '@reduxjs/toolkit/query/react';
 
 
 function ListToDo({ navigation }) {
@@ -16,7 +18,10 @@ function ListToDo({ navigation }) {
   const [upDateOneToDo] = useUpdateOneTodoMutation()
 
   const [item, setItem] = useState("");
-const newToDo ={ id: Date.now(), title: item, done: false }
+ // const newToDo ={ id: Date.now(), title: item, done: false }
+
+const [newToDo, setNewToDo]= useState({}) 
+const [onHandlerNew, setOnHandlerNew]= useState(false)
 
   //--------------------------------------------------
   const ListItems = ["Rendir seminario", "Tesis", "Viaje a Mendoza"]; //ver cual de las dos opciones es mejor, si meter el ListItemes o meter el arra []  
@@ -35,6 +40,7 @@ const newToDo ={ id: Date.now(), title: item, done: false }
     setListItems((current) => [...current]);
   }
   return (
+    <>
     <View style={styles.container}>
       <View style={styles.addContainer}>
         {/* <Pressable onPress={()=> {setChangeScreen("home")}}>
@@ -45,22 +51,29 @@ const newToDo ={ id: Date.now(), title: item, done: false }
       <View style={styles.addContainer}>
         <TextInput
           placeholder="Tarea a realizar"
-          value={newToDo}
+          value={newToDo.title ? newToDo.title: ""}
           onChangeText={(textItem) => {
-            setItem(textItem);
+           
+            //setItem(textItem);
+            setNewToDo ({ id: Date.now(), title: textItem, done: false })
           }}
           style={styles.input}
           focusable
         />
-        <Button title="Agregar" onPress={item !== "" && (() => { dispatch(onAddItem(item)), console.log(listItemsRedux), triggerAddOneToDo(newToDo)/*tiene que ser un objeto*/ })} color="#213547" />
+        <Button title="Agregar" onPress={ newToDo.title && (() => { dispatch(onAddItem(item)),  upDateOneToDo(newToDo)/*tiene que ser un objeto*/ })} color="#213547" />
+        <Button title="Tarea detallada" onPress={() => setOnHandlerNew(true)} color="#213547" />
 
       </View>
-      <Text> {item}</Text>
+      <Text> {newToDo.title}</Text>    
 
       {/*<ItemList data={listItemsRedux}   />*/}
 
       <View style={styles.List}><ListTabNavigator item={listItemsRedux} /></View>
     </View>
+
+    <ModalNewToDo setNewToDo={setNewToDo} onHandlerNew={onHandlerNew} setOnHandlerNew={setOnHandlerNew} upDateOneToDo={upDateOneToDo} />
+
+    </>
   )
 }
 export default ListToDo
