@@ -11,11 +11,13 @@ import {
 import {  useDispatch } from 'react-redux'
 
 import {  onHandlerDelete } from "../features/Slice";
+import { useDeleteOneTodoMutation } from "../app/services/listToDoServices";
 
 
 function ModalDelete({ modalVisible, setModalVisible, item,modalType,index }) {
   const dispatch=useDispatch()
   const {title, description, category,  id}=item
+  const [deleteOneToDo] = useDeleteOneTodoMutation()
 
   return (
     <>
@@ -27,7 +29,7 @@ function ModalDelete({ modalVisible, setModalVisible, item,modalType,index }) {
           <Button
             title={modalType===true?"Editar" : "Borrar"}
             color="#747bff"
-            onPress={() => {setModalVisible(false),modalType===false&& dispatch(onHandlerDelete())}}
+            onPress={() => {setModalVisible(false),modalType===false&& deleteOneToDo(id)}}
           />
         </View>
       </Modal>
