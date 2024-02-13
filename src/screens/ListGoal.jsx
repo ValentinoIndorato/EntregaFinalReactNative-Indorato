@@ -9,8 +9,11 @@ import {
 import { useState } from "react";
 import PruebaFire from "../PruebaFire";
 import ListGoals from "../component/ListGoals";
+import { useUpdateOneGoalMutation } from "../app/services/listGoalsServices";
 
 function ListGoal({ navigation }) {
+  const [updateOneGoal] =useUpdateOneGoalMutation()
+  const [newGoal, setNewGoal] = useState({})
   return (
     <>
       <View style={styles.container}>
@@ -24,14 +27,14 @@ function ListGoal({ navigation }) {
           <View  style={styles.addFazt}>
           <TextInput
            style={styles.input}
-            placeholder="Tarea a realizar"
-            value="item"
+            placeholder="Meta a realizar"
+            value={newGoal.title ? newGoal.title: ""}
             onChangeText={(textItem) => {
-
+              setNewGoal ({ id: Date.now(), title: textItem, done: false })
             }}
             focusable
           /> 
-           <Pressable onPress={() => { setChangeScreen("home") }}>
+           <Pressable onPress={() =>  (updateOneGoal(newGoal)) }>
             <Text>agregar rapido</Text>
           </Pressable>
           </View>
