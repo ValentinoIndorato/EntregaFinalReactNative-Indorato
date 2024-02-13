@@ -7,12 +7,11 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 const Tab = createMaterialTopTabNavigator();
 
 function ListTabNavigator({ navigation,item}){
-    console.log(item)
 return(
   
     <Tab.Navigator>
-    <Tab.Screen name="Para hacer" component={ItemList}  />
-    <Tab.Screen name="Hechas" component={ItemList} />
+    <Tab.Screen name="Para hacer" component={ItemList} initialParams={{num:5,done:false}} />
+    <Tab.Screen name="Hechas" component={ItemList} initialParams={{num:3,done:true}} />
   </Tab.Navigator>
 )
 }
