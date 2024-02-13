@@ -18,7 +18,7 @@ import { useUpdateOneTodoMutation } from "../app/services/listToDoServices";
 function ModalEdit({ modalVisible, setModalVisible, item, modalType, index }) {
   const dispatch = useDispatch()
   const [upDateOneToDo] = useUpdateOneTodoMutation()
-
+  const {title, description, category,  id}=item
   const [editText, setEditText] = useState("");
 
   return (
@@ -26,10 +26,10 @@ function ModalEdit({ modalVisible, setModalVisible, item, modalType, index }) {
       <Modal visible={modalVisible} transparent={true} style={styles.modal}>
         <View style={styles.conteinerItem}>
         <TouchableOpacity onPress={() => setModalVisible(false)}><Text >adsad </Text></TouchableOpacity>
-          <Text style={styles.tex}>{item} </Text>
+          <Text style={styles.tex}>{title} </Text>
           <TextInput
             placeholder="editar"
-            value={editText === "" ? item : editText}
+            value={editText === "" ? "title" : editText}
             onChangeText={(e) => {
               setEditText(e);
             }}
@@ -40,7 +40,7 @@ function ModalEdit({ modalVisible, setModalVisible, item, modalType, index }) {
           <Button style={styles.button}
             title={modalType === true ? "Editar" : "Borrar"}
             color="#747bff"
-            onPress={() => { setModalVisible(false), modalType === true && dispatch(onHandlerEdit({ text: editText === "" ? item : editText, index: index })), upDateOneToDo({ editText }) }}
+            onPress={() => { setModalVisible(false), modalType === true && dispatch(onHandlerEdit({ text: editText === "" ? title : editText, index: index })), upDateOneToDo({ editText }) }}
           />
 
         </View>

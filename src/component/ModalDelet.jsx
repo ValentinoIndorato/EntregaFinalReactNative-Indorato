@@ -15,6 +15,7 @@ import {  onHandlerDelete } from "../features/Slice";
 
 function ModalDelete({ modalVisible, setModalVisible, item,modalType,index }) {
   const dispatch=useDispatch()
+  const {title, description, category,  id}=item
 
   return (
     <>
@@ -22,7 +23,7 @@ function ModalDelete({ modalVisible, setModalVisible, item,modalType,index }) {
         <View style={styles.conteinerItem}>
         <TouchableOpacity onPress={() => setModalVisible(false)}><Text >adsasdasad </Text></TouchableOpacity>
 
-          <Text style={styles.tex}>{item}</Text>
+          <Text style={styles.tex}>{title}</Text>
           <Button
             title={modalType===true?"Editar" : "Borrar"}
             color="#747bff"
