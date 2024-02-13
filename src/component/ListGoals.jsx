@@ -20,15 +20,19 @@ const { data: oneGoalData, isLoading: oneGoalLoading, error: oneGoalError } = us
     const [expanded, setExpanded] = useState(true);
     const handlePress = () => setExpanded(!expanded);
     const {data:ListToDO, isLoading, error} =useGetListToDoQuery()
+
+    const arrayListGoalsData = !listGoalsLoading && Object.values(listGoalsData) 
    //const toDoList=["G-1"]
-   const filterTasksForListToDo = (toDoList)=> ListToDO.filter((element) => toDoList.includes(element.id))
-//console.log(filterTasksForListToDo)
+  // const arrayListToDO= !isLoading && Object.values(ListToDO)
+   //console.log(arrayListToDO)
+   const filterTasksForListToDo = (toDoList)=> Object.values(ListToDO) .filter((element) => toDoList.includes(element.id))
+
     return (
         <><View style={styles.itemList}>
             <List.Section >
                 {!listGoalsLoading && !isLoading && 
                 <FlatList
-                    data={listGoalsData}
+                    data={arrayListGoalsData}
                     keyExtractor={(item, id) => id}
                     renderItem={({ item, index }) => (
                         <List.Accordion
