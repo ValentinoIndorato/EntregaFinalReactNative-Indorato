@@ -9,12 +9,31 @@ import {
 import CardItem from "./CardItem";
 import { useSelector, useDispatch } from 'react-redux'
 import { useGetListToDoQuery, useGetOneToDoQuery } from "../app/services/listToDoServices";
+import { useEffect, useState } from "react";
 
 
 function ItemList({ navigation, route, data }) {
   const listItemsRedux = useSelector((state) => state.toDo.value)
-  const {data:oneToDo, isLoading, error} = useGetOneToDoQuery()
+ const[onHandlerFilter,setOnHandlerFilter]=useState([])
+
   const {name }=route
+  const {num,done }=route.params
+  const {data:oneToDo, isLoading, error, reset} = useGetOneToDoQuery(done);
+  
+  const arrayOne= !isLoading && Object.values(oneToDo)
+  console.log(arrayOne)
+  //SI HAGO CAMBIOS EN LA BASE DE DATOS NO LOS LEE DE INMEDIATO
+
+ /*useEffect(() => {
+
+
+       const arrayOne=Object.values(oneToDo)
+      setOnHandlerFilter(arrayOne)
+        
+  },[])*/
+ 
+
+  
 
   
  return (
@@ -25,13 +44,14 @@ function ItemList({ navigation, route, data }) {
         renderItem={({ item, index }) => <CardItem item={item} index={index} />}
       />}
       {!isLoading && name=== "Para hacer" &&<FlatList
-        data={listItemsRedux}
+        data={arrayOne}
         keyExtractor={(item, index) => index}
         renderItem={({ item, index }) =>item !== null && (<CardItem item={item} index={index} />     )}
       />}
        
         {!isLoading && name=== "Hechas"  &&<FlatList
-        data={oneToDo}
+        data={arrayOne
+        }
         keyExtractor={(item, index) => index}
         renderItem={({ item, index }) => item !== null && <CardItem item={item} index={index}  isLoading={isLoading} />}
       />}
