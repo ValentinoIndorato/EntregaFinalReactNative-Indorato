@@ -46,9 +46,16 @@ export const listTodoApi = createApi({
         },*/
         invalidatesTags: ['Post'],
         //invalidatesTags: (result, error, { id }) => [{ type: 'OneTodo', id }],//PREGUNTAR A CRIS
+    }),
+    deleteOneTodo: builder.mutation({
+      query:(id)=> ({    
+          url: `ListToDo/${id}.json`,
+          method: 'DELETE',
+        }),       
+        invalidatesTags: ['Post'],
     })
   }),
 })
 
 
-export const { useGetListToDoQuery,  useGetOneToDoQuery, usePostOneToDoMutation, useUpdateOneTodoMutation } = listTodoApi
+export const { useGetListToDoQuery,  useGetOneToDoQuery, usePostOneToDoMutation, useUpdateOneTodoMutation, useDeleteOneTodoMutation } = listTodoApi
