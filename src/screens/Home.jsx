@@ -17,10 +17,10 @@ function Home({navigation}) {
       <View style={styles.container}>
         <Text style={styles.h1}>Bienvenido</Text>
         <View >
-        <Pressable style={styles.Pressable} onPress={()=> navigation.navigate("ListToDo")}>
+        <Pressable style={styles.Pressable} onPress={()=> navigation.navigate("Tus tareas")}>
           <Text>Sus tareas</Text>
         </Pressable>
-        <Pressable style={styles.Pressable} onPress={()=>{ navigation.navigate("ListGoal")}}>
+        <Pressable style={styles.Pressable} onPress={()=>{ navigation.navigate("Tus metas")}}>
           <Text>Sus metas</Text>
         </Pressable>
         </View>
