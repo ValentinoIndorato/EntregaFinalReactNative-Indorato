@@ -68,5 +68,59 @@
       "thumbnail": "",
       "images": [],
       "done": false
-    }
+    },{
+      "id": "G-1",
+    "title": "Prueba ToDO Goals",
+    "description": "Levar dni",  
+    "category":[],
+    "thumbnail": "",
+    "images": [],
+    "done": false
+  },{
+    "id": "G-2",
+    "title": "Prueba ToDO Goals",
+  "description": "Levar dni",  
+  "category":[],
+  "thumbnail": "",
+  "images": [],
+  "done": false
+},{
+  "id": "G-3",
+  "title": "Prueba ToDO Goals",
+  "description": "Levar dni",  
+"category":[],
+"thumbnail": "",
+"images": [],
+"done": false
+}, {
+  "id": "G-4",
+  "title":"Identificar tematica y tipo de tesis",
+  "category": ["Estudio"],
+  "done": false
+}, {
+  "id": "G-5",
+  "title":"Empezar escrito y practico",
+  "category": ["Estudio"],
+  "done": false
+}, {
+  "id": "G-6",
+  "title":"Buscar tesista",
+  "category": ["Estudio"],
+  "done": false
+},{
+  "id": "G-7",
+  "title":"Encontrar foto a copiar",
+  "category": ["Regalos a terceros"],
+  "done": false
+}, {
+  "id": "G-8",
+  "title":"Preparar bastidor",
+  "category": ["Regalos a terceros"],
+  "done": false
+}, {
+  "id": "G-9",
+  "title":"Establecer horarios.",
+  "category": ["Regalos a terceros"],
+  "done": false
+}
 ]
