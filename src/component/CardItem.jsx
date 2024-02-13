@@ -2,14 +2,17 @@ import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import { useState } from "react";
 import ModalDelete from "./ModalDelet";
 import ModalEdit from "./ModalEdit";
+import { useUpdateOneTodoMutation } from "../app/services/listToDoServices";
 
 
 function CardItem({ item, index, isLoading }) {
+   const {title, description, category, done, id}=item
   const [modalVisible, setModalVisible] = useState(false);
   const [modalEditVisible, setModalEditVisible] = useState(false);
   const [modalType, setModalType] = useState(true);
-  const [done, setDone] = useState(false);
-  const {title, description, category,  id}=item
+ 
+
+const [upDateOneToDo] = useUpdateOneTodoMutation()
 
 
   return (
@@ -22,9 +25,9 @@ function CardItem({ item, index, isLoading }) {
         <View style={styles.buttons}>
           <Button
             title={done === true ? "Realizada" : "Por realizar"}
-            onPress={() => { setDone(!done) }}
+            onPress={() => { upDateOneToDo({...item, done:!done}) }}
             color={done === true ? "#213547" : "#2135479f"}
-            disabled={item === "" && true}
+            disabled={item === "" && true}//REVISAR
 
           />
           <Button
@@ -73,13 +76,12 @@ const styles = StyleSheet.create({
   conteianerDone: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: 500,
     alignItems: "center",
     marginTop: 15,
-    borderWidth: 3,
-    borderColor: "#747bff",
-    borderRadius: 5,
-    padding: 5,
+    paddingHorizontal: 15, 
+    //borderWidth: 3,
+    //borderColor: "#747bff",
+    borderRadius: 5,    
   },
   buttons:{
 //paddingLeft:50  
