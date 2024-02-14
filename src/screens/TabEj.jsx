@@ -52,10 +52,10 @@ async function addImgLibrary(){
 return(
 <View>
     
-    <Image source={img&& {uri:img}} style={{ width: 200, height: 200, }} />
+    {img&&<Image source={img&& {uri:img}} style={{ width: 200, height: 200, }} />}
     <Button title="Tomar imagen" onPress={()=>{addImgCamera()}} color="#213547"  />
     <Button title="Agregar imagen" onPress={()=>{addImgLibrary()}} color="#747bff"  />
-    <Image source={img&& {uri:ImageRedux}} style={{ width: 200, height: 200, }} />
+   {/*img&& <Image source={img&& {uri:ImageRedux}} style={{ width: 200, height: 200, }} />*/}
 
 </View>
 )
