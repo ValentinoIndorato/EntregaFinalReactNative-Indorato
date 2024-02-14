@@ -13,6 +13,7 @@ import TabEj from "../screens/TabEj";
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { AntDesign } from '@expo/vector-icons';
 import { Foundation } from '@expo/vector-icons';
+import AutheNavigator from "./AuthNavigator";
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -20,7 +21,8 @@ function Navigator() {
   return (
     <>
       <NavigationContainer>
-        <Tab.Navigator 
+       
+       <Tab.Navigator 
        
               initialRouteName="Home"
         screenOptions={{
@@ -39,7 +41,9 @@ function Navigator() {
           options={{
             tabBarIcon:({color})=>
             <Foundation name="target" size={24} color={color} />
-          }} name="Tus metas" component={ListGoal} />         
+          }} name="Tus metas" component={ListGoal} /> 
+           <Tab.Screen
+          name="Inicio" component={AutheNavigator} />         
         </Tab.Navigator>
       </NavigationContainer>
     </>
