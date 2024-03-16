@@ -23,7 +23,7 @@ const Perfil = () => {
         <Text style={styles.text}>123-456-7890</Text>
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={()=>dispatch(clearUser({email:null, idToken:null}))}>
+      <TouchableOpacity style={styles.button} onPress={()=>dispatch(clearUser({email:null, idToken:null, localId:null}))}>
         <Text style={styles.buttonText}>Cerrar Sesión</Text>
       </TouchableOpacity>
     </View>

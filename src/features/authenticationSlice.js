@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState={
     value:{
         email:null,
-        idToken:null
+        idToken:null,
+        localId:null,
     }
 }
 export const authenticationSlice = createSlice({
@@ -12,13 +13,16 @@ export const authenticationSlice = createSlice({
          setUser:(state, action)=> {
             state.value={
                 email:       action.payload.email ,
-        idToken:action.payload.idToken
+        idToken:action.payload.idToken,
+        localId:action.payload.localId,
             }       
       },
       clearUser:(state, action)=> {
         state.value={
-            email:       action.payload.email ,
-            idToken:action.payload.idToken
+            email:action.payload.email ,
+            idToken:action.payload.idToken,
+            localId:action.payload.localId,
+
         }
         }}
 })
