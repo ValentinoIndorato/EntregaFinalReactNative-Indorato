@@ -18,8 +18,9 @@ function ItemList({ navigation, route, data }) {
 
   const {name }=route
   const {num,done }=route.params
+  console.log(typeof done+ " aqui")
   const {data:oneToDo, isLoading, error, reset} = useGetOneToDoQuery(done);
-  
+  console.log(oneToDo)
   const arrayOne= !isLoading && Object.values(oneToDo)
   //SI HAGO CAMBIOS EN LA BASE DE DATOS NO LOS LEE DE INMEDIATO
 

@@ -14,7 +14,7 @@ export const listTodoApi = createApi({
     getOneToDo: builder.query({
       //query: () => `ListToDo.json`,
        //query:(id)=>`ListToDo/${id}.json`,
-       query:(done)=>`ListToDo.json?orderBy="done"&equalTo=${done}`,
+       query:(done)=>`ListToDo.json?orderBy="done"&equalTo=${done}` ,
       providesTags: ['Post'],
 
     }),   
@@ -53,9 +53,20 @@ export const listTodoApi = createApi({
           method: 'DELETE',
         }),       
         invalidatesTags: ['Post'],
-    })
+    }),
+
+    //usuario logeado
+    getUserListToDo: builder.query({      
+      query: (localId) => `Users/${localId}/ListToDo.json`,
+    }),
+    getUserOneToDo: builder.query({      
+       query:(data)=>`Users/${data.localId}/ListToDo.json?orderBy="done"&equalTo=${data.done}`,
+      providesTags: ['Post'],
+
+    }),   
+   
   }),
 })
 
 
-export const { useGetListToDoQuery,  useGetOneToDoQuery, usePostOneToDoMutation, useUpdateOneTodoMutation, useDeleteOneTodoMutation } = listTodoApi
+export const { useGetListToDoQuery,  useGetOneToDoQuery, usePostOneToDoMutation, useUpdateOneTodoMutation, useDeleteOneTodoMutation, useGetUserListToDoQuery, useGetUserOneToDoQuery } = listTodoApi
