@@ -32,9 +32,13 @@ export const ListGoalsApi = createApi({
         body:data,
       }),             
       invalidatesTags: ['Post'],  
-    })
+    }),
+    getUserListGoals: builder.query({
+      
+      query: (localId) => `Users/${localId}/ListGoals.json`,
+    }),
   }),
 })
 
 
-export const { useGetListGoalsQuery,  useGetOneGoalQuery, usePostOneGoalMutation, useUpdateOneGoalMutation } = ListGoalsApi
+export const { useGetListGoalsQuery,  useGetOneGoalQuery, usePostOneGoalMutation, useUpdateOneGoalMutation, useGetUserListGoalsQuery } = ListGoalsApi
