@@ -14,7 +14,7 @@ const SingUp=({navigation})=>{
     const [triggerSingUp,{data,isError,isSuccess,error,isLoading}]= useSignUpMutation()
     const[email,setEmail]=useState("")
     const[password,setPassword]=useState("")
-    const handleSignUp = () => {triggerSingUp({email,password})}
+    const handleSignUp = () => {triggerSingUp({email,password}),  isSuccess && (setEmail(""),setPassword(""), navigation.navigate("Login"))  }
     return (
         <View style={styles.container}>
           <TextInput
