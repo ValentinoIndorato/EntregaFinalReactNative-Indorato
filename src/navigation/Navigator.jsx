@@ -43,6 +43,9 @@ function Navigator() {
             <Foundation name="target" size={24} color={color} />
           }} name="Tus metas" component={ListGoal} /> 
            <Tab.Screen
+           options={{
+            tabBarIcon:({color})=> <AntDesign name="user" size={24} color={color} />
+          }} 
           name="Inicio" component={AutheNavigator} />         
         </Tab.Navigator>
       </NavigationContainer>
