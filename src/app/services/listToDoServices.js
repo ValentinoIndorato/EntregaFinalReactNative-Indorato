@@ -5,7 +5,7 @@ import { queryCache } from '@reduxjs/toolkit/query/react';
 export const listTodoApi = createApi({
   reducerPath: 'listTodoApi',
   baseQuery: fetchBaseQuery({ baseUrl: base_url }),
-  tagTypes: ['Post'],
+  tagTypes: ['Post', "PostUser"],
 
   endpoints: (builder) => ({
     getListToDo: builder.query({
@@ -55,18 +55,54 @@ export const listTodoApi = createApi({
         invalidatesTags: ['Post'],
     }),
 
-    //usuario logeado
+    //USUARIO LOGEADO
+    //GET
     getUserListToDo: builder.query({      
       query: (localId) => `Users/${localId}/ListToDo.json`,
     }),
     getUserOneToDo: builder.query({      
-       query:(data)=>`Users/${data.localId}/ListToDo.json?orderBy="done"&equalTo=${data.done}`,
-      providesTags: ['Post'],
+       query:(data)=>
+      `Users/${data.localId}/ListToDo.json?orderBy="done"&equalTo=${data.done}`,
+      providesTags: ['PostUser'],
 
+    }),
+    //Post
+    postUserOneToDo: builder.mutation({
+      query:(data) =>  ({
+         url: `Users/${data.localId}/ListToDo/${data.id}.json`,
+          method: 'POST',
+          body:data,}),
+          invalidatesTags: ['PostUser'],      
+    }),
+    //Put
+    updateUserOneTodo: builder.mutation({
+      query:({id, localId,...body })=> ({    
+          url: `Users/${localId}/ListToDo/${id}.json`,
+          method: 'PUT',
+          body:{id,...body},
+        }),        
+        invalidatesTags: ['PostUser'],
+    }),
+    //Delete
+    deleteUserOneTodo: builder.mutation({
+      query:(data)=> ({    
+          url: `Users/${data.localId}/ListToDo/${data.id}.json`,
+          method: 'DELETE',
+        }),       
+        invalidatesTags: ['Postuser'],
     }),   
-   
   }),
 })
 
 
-export const { useGetListToDoQuery,  useGetOneToDoQuery, usePostOneToDoMutation, useUpdateOneTodoMutation, useDeleteOneTodoMutation, useGetUserListToDoQuery, useGetUserOneToDoQuery } = listTodoApi
+export const {
+   useGetListToDoQuery,
+   useGetOneToDoQuery,
+   usePostOneToDoMutation,
+   useUpdateOneTodoMutation,
+   useDeleteOneTodoMutation,
+  //USUARIOS REGISTRADOS
+   useGetUserListToDoQuery,
+   useGetUserOneToDoQuery,
+   usePostUserOneToDoMutation,
+   useUpdateUserOneTodoMutation } = listTodoApi

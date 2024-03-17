@@ -4,7 +4,7 @@ import { base_url } from '../../firabase/db'
 export const ListGoalsApi = createApi({
   reducerPath: 'ListGoalsApi',
   baseQuery: fetchBaseQuery({ baseUrl: base_url }),
-  tagTypes: ['Post'],
+  tagTypes: ['Post','PostUser'],
 
   endpoints: (builder) => ({
     getListGoals: builder.query({
@@ -33,12 +33,33 @@ export const ListGoalsApi = createApi({
       }),             
       invalidatesTags: ['Post'],  
     }),
-    getUserListGoals: builder.query({
-      
+    //USUARIOS REGISTRADOS
+    //GET
+    getUserListGoals: builder.query({      
       query: (localId) => `Users/${localId}/ListGoals.json`,
+    }),
+    getUserOneGoal: builder.query({
+      query:({ localId, id, ...body })=>     
+        `Users/${localId}/ListGoals.json?orderBy="id"&equalTo=${id}`,
+        providesTags: ['PostUser'],
+    }),
+    updateUserOneGoal: builder.mutation({
+      query:({ localId, id, ...body })=>( { 
+        url: `Users/${localId}/ListGoals/${id}.json`,
+        method: 'PUT',
+        body:{id, ...body}, }),                   
+      invalidatesTags: ['PostUser'], 
     }),
   }),
 })
 
 
-export const { useGetListGoalsQuery,  useGetOneGoalQuery, usePostOneGoalMutation, useUpdateOneGoalMutation, useGetUserListGoalsQuery } = ListGoalsApi
+export const { 
+  useGetListGoalsQuery,
+  useGetOneGoalQuery,
+  usePostOneGoalMutation,
+  useUpdateOneGoalMutation,
+  //USUARIOS REGISTRADOS
+  useGetUserListGoalsQuery,
+  useGetUserOneGoalQuery,
+  useUpdateUserOneGoalMutation } = ListGoalsApi

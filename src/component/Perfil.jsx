@@ -11,10 +11,10 @@ const Perfil = () => {
 const {data, isLoading, error, reset} =useGetUserOneToDoQuery({localId:localId, done:false})
 const {data:user} =useGetUserListToDoQuery(localId)
 const arraydata= !isLoading && Object.values(data)
-// isLoading && console.log(error, data, isLoading)
-// !isLoading && console.log(data, error, isLoading)
-// !isLoading && console.log(localId)
-// !isLoading && console.log(arraydata)
+isLoading && console.log(error, data, isLoading)
+!isLoading && console.log(data, error, isLoading)
+!isLoading && console.log(localId)
+!isLoading && console.log(arraydata)
 const Item = ({title}) => (
   <View >
     <Text >{title}</Text>

@@ -6,7 +6,7 @@ import { AntDesign } from "@expo/vector-icons"
 import { useSelector, useDispatch } from 'react-redux'
 import { onAddItem, onHandlerDelete } from "../features/Slice";
 import ListTabNavigator from "../navigation/ListTabNavigator";
-import { usePostOneToDoMutation, useUpdateOneTodoMutation } from "../app/services/listToDoServices";
+import { usePostOneToDoMutation, useUpdateOneTodoMutation, useUpdateUserOneTodoMutation } from "../app/services/listToDoServices";
 import ModalNewToDo from "../component/ModalNewToDo";
 import { useMutation, queryCache } from '@reduxjs/toolkit/query/react';
 
@@ -14,6 +14,9 @@ import { useMutation, queryCache } from '@reduxjs/toolkit/query/react';
 function ListToDo({ navigation }) {
   const listItemsRedux = useSelector((state) => state.toDo.value)
   const dispatch = useDispatch()
+  // pedido para usuario registrado
+  const localId= useSelector(state=>state.authentication.value.localId)
+  const [updateUserOneTodo] =  useUpdateUserOneTodoMutation()
   const [triggerAddOneToDo] = usePostOneToDoMutation()
   const [upDateOneToDo] = useUpdateOneTodoMutation()
 
