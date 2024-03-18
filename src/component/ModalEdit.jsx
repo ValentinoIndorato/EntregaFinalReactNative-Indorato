@@ -14,6 +14,7 @@ import { useDispatch } from 'react-redux'
 import { onHandlerEdit } from "../features/Slice";
 import { useState } from "react";
 import { useUpdateOneTodoMutation } from "../app/services/listToDoServices";
+import { MaterialCommunityIcons  } from '@expo/vector-icons';
 
 
 function ModalEdit({ modalVisible, setModalVisible, item, modalType, index }) {
@@ -36,16 +37,16 @@ function ModalEdit({ modalVisible, setModalVisible, item, modalType, index }) {
     <>
       <Modal visible={modalVisible} transparent={true} style={styles.modal}>
         <View style={styles.conteinerItem}>
-        <TouchableOpacity onPress={() => (setModalVisible(false), resetState())}><Text >adsad </Text></TouchableOpacity>
+        <TouchableOpacity onPress={() => (setModalVisible(false), resetState())} style={styles.TouchableOpacity}><MaterialCommunityIcons name="close-thick" size={24} color="white" /></TouchableOpacity>
           <Text style={styles.tex}>{title} </Text>
           <TextInput style={styles.input}
             placeholder="Título"
-            value={newTitle? newTitle : "Título"}
+            value={newTitle && newTitle }
             onChangeText={(e) => {
               setNewTitle(e);
             }} ></TextInput>
             <TextInput style={styles.input}
-            value={newDescription? newDescription:"q"}
+            value={newDescription && newDescription}
             placeholder="Descripción"
             onChangeText={(e) => {
               setNewDescription(e);
@@ -56,14 +57,16 @@ function ModalEdit({ modalVisible, setModalVisible, item, modalType, index }) {
             onChangeText={(e) => {
               setNewCategory(e);
             }}></TextInput>
-                            <Text>{newDone?'Realizada' : 'Por realizar'}</Text>
+            <View  style={styles.realizadaONo}>
+           <Text>{newDone?'Realizada' : 'Por realizar'}</Text>
 
            <Switch
-            trackColor={{false: '#767577', true: '#81b0ff'}}
-            thumbColor={newDone ? '#f5dd4b' : '#f4f3f4'}         
+            trackColor={{false: '#6e71a8', true: '#EDE6F3'}}
+            thumbColor={newDone ? '#747bff' : '#f4f3f4'}         
             value={newDone}
             onValueChange={toggleSwitch}
             />
+            </View>
 
           <Button style={styles.button}
             title={modalType === true ? "Editar" : "Borrar"}
@@ -86,15 +89,16 @@ function ModalEdit({ modalVisible, setModalVisible, item, modalType, index }) {
 const styles = StyleSheet.create({
   modal: {
     flex: 1,
-
     alignItems: "center",
     justifyContent: "center",
+    
   },
   conteinerItem: {
     flex: 1,
     backgroundColor: "#2135479f",
     alignItems: "center",
     justifyContent: "center",
+    gap:10
   },
   tex: {
     color: "#fff",
@@ -102,9 +106,32 @@ const styles = StyleSheet.create({
     // fontWeight: 600, me tira error preguntar porque
   },
   input: {
-    color: "red",
-    marginBottom: 50
+    color: "#6e71a8",
+    backgroundColor: "#fff",
+    padding: 5,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: "#747bff",
   },
+  realizadaONo:{
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 15,
+    backgroundColor: "white",
+    borderWidth: 1,
+    color: "#747bff",
+    borderColor: "#747bff",
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    marginBottom: 10 ,     
+  },
+  TouchableOpacity: {
+    backgroundColor: "#747bff",
+    borderRadius: 5,
+    padding: 1,
+    alignSelf: 'flex-end',
+    marginRight: 10
+      },
   button: {
 
 
