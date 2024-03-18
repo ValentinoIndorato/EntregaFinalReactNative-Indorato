@@ -34,13 +34,13 @@ function ListGoal({ navigation }) {
             }}
             focusable
           /> 
-           <Pressable onPress={() =>  (updateOneGoal(newGoal)) }>
-            <Text>agregar rapido</Text>
+           <Pressable  style={styles.Pressable} onPress={() =>  (updateOneGoal(newGoal)) }>
+            <Text  style={styles.PressableText}>AGREGAR</Text>
           </Pressable>
           </View>
         
-          <Pressable onPress={() => { setChangeScreen("home") }}>
-            <Text>agregar detallado</Text>
+          <Pressable style={styles.Pressable} onPress={() => { setChangeScreen("home") }}>
+            <Text style={styles.PressableText}>META DETALLADA</Text>
           </Pressable>
         </View>
         <ListGoals />
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "top",
-
+    marginTop: 15
   },
   header: {
     flexDirection: "row",
@@ -66,19 +66,38 @@ const styles = StyleSheet.create({
   },
   h1: {
     fontSize: 50,
-    marginBottom: 15,
+    marginBottom: 5,
     fontFamily: "RubikBubbles"
+  },
+  add:{
+    flexDirection: "row",
+    alignItems: "center",
+    alignSelf: "stretch",
+    justifyContent: "center", 
+    gap: 10,
   },
   addFazt:{
     flexDirection: "row",
-    backgroundColor:"beige"
+    alignItems: "center",
+
   },
+  Pressable:{   
+    paddingHorizontal:5,
+    paddingVertical:10,
+     backgroundColor: "#6750a4",
+     borderRadius: 3,
+},
+PressableText:{
+  color:"#EDE6F3",
+fontWeight: "600",
+},
   input: {
     borderWidth: 1,
     color: "#747bff",
     borderColor: "#747bff",
     borderRadius: 5,
     paddingLeft: 5,
+    marginHorizontal: 10
   },
 
 });

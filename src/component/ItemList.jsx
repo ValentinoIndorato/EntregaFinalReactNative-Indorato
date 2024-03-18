@@ -61,9 +61,8 @@ function ItemList({ navigation, route, data }) {
 }
 const styles = StyleSheet.create({
   itemList: {
-    backgroundColor: "fff",
-    flex: 1,
-
+    backgroundColor: "#dfe1f8",
+    flex: 1, 
     //height:400 // esto le da el tamaño y corrige el erro de que un elemento no se ve por estar tapado por la barra de navegacion
   },
   h2: {

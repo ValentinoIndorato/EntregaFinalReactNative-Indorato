@@ -86,10 +86,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "top",
+    marginTop: 15
   },
   h1: {
     fontSize: 50,
-    marginBottom: 15,
+    marginBottom: 5,
     fontFamily: "RubikBubbles"
     // fontWeight: 600,  me tira error preguntar porque
   },

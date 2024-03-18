@@ -9,7 +9,14 @@ const Tab = createMaterialTopTabNavigator();
 function ListTabNavigator({ navigation,item}){
 return(
   
-    <Tab.Navigator>
+    <Tab.Navigator
+    screenOptions={{
+      tabBarActiveTintColor: "#213547",
+      tabBarInactiveTintColor: "#2135479f",
+      tabBarPressColor: "#747bff",
+      tabBarPressOpacity:"#747bff",
+     
+    }}>
     <Tab.Screen name="Para hacer" component={ItemList} initialParams={{num:5,done:false}} />
     <Tab.Screen name="Hechas" component={ItemList} initialParams={{num:3,done:true}} />
   </Tab.Navigator>
