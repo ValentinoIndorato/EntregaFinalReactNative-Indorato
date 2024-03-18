@@ -4,7 +4,8 @@ import { useLoginMutation } from '../app/services/authenticationServices';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../features/authenticationSlice';
 
-const Login = () => {
+const Login = ({navigation}) => {
+ // console.log(navigation)
     const dispatch = useDispatch()
     const [triggerLogin,{data,isError,isSuccess,error,isLoading}]= useLoginMutation()
   const [email, setEmail] = useState('');
