@@ -20,6 +20,7 @@ function Home({navigation}) {
         <Pressable style={styles.Pressable} onPress={()=> navigation.navigate("Tus tareas")}>
           <Text>Sus tareas</Text>
         </Pressable>
+        
         <Pressable style={styles.Pressable} onPress={()=>{ navigation.navigate("Tus metas")}}>
           <Text>Sus metas</Text>
         </Pressable>
@@ -44,6 +45,7 @@ const styles = StyleSheet.create({
     padding:2,
     marginTop:15,
     borderRadius: 5,
+    backgroundColor:"#ffffffbb"
 
   },
   h1: {
@@ -52,8 +54,7 @@ const styles = StyleSheet.create({
     fontFamily:"RubikBubbles"
   },
   image:{
-    flex: 1,
-   
+    flex: 1,   
     alignItems: "center",
     justifyContent: "center",
   
