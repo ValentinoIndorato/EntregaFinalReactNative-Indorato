@@ -11,6 +11,7 @@ import {
 import { useDispatch } from "react-redux";
 import { onHandlerEdit } from "../features/Slice";
 import { useState } from "react";
+import { MaterialCommunityIcons  } from '@expo/vector-icons';
 
 
 function ModalNewToDo({setNewToDo, onHandlerNew, setOnHandlerNew, upDateOneToDo}){
@@ -30,7 +31,8 @@ const resetState=()=>{
         <>
         <Modal   visible={onHandlerNew} transparent={true} style={styles.modal} >
            <View style={styles.conteinerItem}>
-            <TouchableOpacity onPress={() => setOnHandlerNew(false)}><Text >Close </Text></TouchableOpacity>
+            <TouchableOpacity  style={styles.TouchableOpacity} onPress={() => setOnHandlerNew(false)}><MaterialCommunityIcons name="close-thick" size={24} color="white" /></TouchableOpacity>
+            <View style={styles.conteiner}>
             <TextInput style={styles.input}
             placeholder="Título"
             value={title}
@@ -49,8 +51,9 @@ const resetState=()=>{
             onChangeText={(e) => {
                 setCategory(e);
             }}></TextInput>
-            <View>
-                <Text>{done?'Realizada' : 'Por realizar'}</Text>
+         
+            <View style={styles.realizadaONo}>
+                <Text style={styles.realizadaONo_text}>{done?'Realizada' : 'Por realizar'}</Text>
             <Switch
             trackColor={{false: '#767577', true: '#81b0ff'}}
             thumbColor={done ? '#f5dd4b' : '#f4f3f4'}         
@@ -64,28 +67,37 @@ const resetState=()=>{
             onPress={() =>  (setOnHandlerNew(false),upDateOneToDo({id: Date.now(),title,description,category,done}), resetState())}
           />
           </View>
+          </View>
         </Modal>        
         </>
     )
 }
 const styles = StyleSheet.create({
     modal: {
-      flex: 1,
-  
+      flex: 1,  
       alignItems: "center",
       justifyContent: "center",
     },
     conteinerItem: {
       flex: 1,
       backgroundColor: "#2135479f",
-      alignItems: "center",
       justifyContent: "center",
+    },
+    conteiner: {
+      alignItems: "center",
     },
     tex: {
       color: "#fff",
       fontSize: 25,
       // fontWeight: 600, me tira error preguntar porque
     },
+    TouchableOpacity: {
+      backgroundColor: "#747bff",
+      borderRadius: 5,
+      padding: 1,
+      alignSelf: 'flex-end',
+      marginRight: 10
+        },
     input: {
     backgroundColor: "white",
     borderWidth: 1,
@@ -94,6 +106,22 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     margin:5
+    },
+    realizadaONo:{
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 15,
+      backgroundColor: "white",
+      borderWidth: 1,
+      color: "#747bff",
+      borderColor: "#747bff",
+      borderRadius: 5,
+      paddingHorizontal: 10,
+      marginBottom: 10 ,     
+    },
+    realizadaONo_text:{
+      color: "#747bff",
+      fontSize: 16,
     },
     button: {
   

@@ -18,6 +18,8 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function Navigator() {
+  //"#6750a4"
+  const variableColor = (focused)=> focused?"#747bff":"#8E8E8F"
   return (
     <>
       <NavigationContainer>
@@ -31,20 +33,22 @@ function Navigator() {
       }
       }>
           <Tab.Screen options={{
-            tabBarIcon:({color})=> <MaterialCommunityIcons name="format-list-text" size={24} color={color} />
+            tabBarIcon:({focused})=> <MaterialCommunityIcons name="format-list-text" size={24} color={variableColor (focused)} />
           }} name="Tus tareas" component={ListToDo} />
             <Tab.Screen
           options={{
-            tabBarIcon:({color})=> <AntDesign name="aliwangwang-o1" size={24} color={color} />
+            tabBarIcon:({focused})=> <AntDesign name="aliwangwang-o1" size={24} color={variableColor (focused)} />
           }} name="Home" component={Home} />
           <Tab.Screen
           options={{
-            tabBarIcon:({color})=>
-            <Foundation name="target" size={24} color={color} />
+            tabBarIcon:({focused})=>
+            <Foundation name="target" size={24} color={variableColor (focused)} 
+            //utilice props vi que tira {"color": "black", "focused": true, "size": 25} |||  {"color": "#8E8E8F", "focused": false, "size": 25}
+            />
           }} name="Tus metas" component={ListGoal} /> 
            <Tab.Screen
            options={{
-            tabBarIcon:({color})=> <AntDesign name="user" size={24} color={color} />
+            tabBarIcon:({focused})=> <AntDesign name="user" size={24} color={variableColor (focused)} />
           }} 
           name="Inicio" component={AutheNavigator} />         
         </Tab.Navigator>

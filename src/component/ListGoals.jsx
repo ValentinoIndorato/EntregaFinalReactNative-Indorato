@@ -11,7 +11,7 @@ import {
 import CardItemGoal from "./CardItemGoal";
 import { useGetListGoalsQuery, useGetOneGoalQuery } from "../app/services/listGoalsServices";
 import { List } from 'react-native-paper';
-import { Foundation } from '@expo/vector-icons';
+import { Foundation,MaterialCommunityIcons } from '@expo/vector-icons';
 import { useGetListToDoQuery } from "../app/services/listToDoServices";
 
 const ListGoals = () => {
@@ -37,13 +37,13 @@ const { data: oneGoalData, isLoading: oneGoalLoading, error: oneGoalError } = us
                     renderItem={({ item, index }) => (
                         <List.Accordion
                             title={item.title}
-                            left={props => <Foundation name="target" size={24} color="black" {...props} /> }>
+                            left={props =>console.log(props) }>
                            {/* *informacion de otras opciones mas abajos    */}
                            {item.toDoList &&<FlatList
                             data={filterTasksForListToDo(item.toDoList)}
                             keyExtractor={(item, id) => id}
                             renderItem={({ item, index }) => (
-                                <List.Item title={item.title} />
+                                <List.Item left={props =>  <MaterialCommunityIcons {...props} name="format-list-text" size={20} color="#747bff"  /> } title={item.title} titleStyle={{color:"black", }}                     />
                             )}
                              />}
                             <List.Item title="Second item" />
@@ -72,6 +72,9 @@ const styles = StyleSheet.create({
         flex: 1,
         width: "100%",
     },
+    text:{
+        color:"#213547"
+    }
 });
 {/*
  {item.toDoList &&(filterTasksForListToDo(item.toDoList).map((element) => <List.Item key={element.id} title={element.title} />))}
