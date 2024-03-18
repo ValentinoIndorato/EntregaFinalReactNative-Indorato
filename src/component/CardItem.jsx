@@ -26,7 +26,7 @@ const [upDateOneToDo] = useUpdateOneTodoMutation()
           <Button
             title={done === true ? "Realizada" : "Por realizar"}
             onPress={() => { upDateOneToDo({...item, done:!done}) }}
-            color={done === true ? "#213547" : "#2135479f"}
+            color={done === true ? "#213547" : "#677587"}
             disabled={item === "" && true}//REVISAR
 
           />
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     paddingHorizontal: 15, 
        // width: 500, queda muy grande, como lograr que sea un tamaño adaptable. Con width: "100%" funciona.
-
+    
   },
   conteianerDone: {
     flexDirection: "row",
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     gap: 15
   },
   title:{
-backgroundColor:"beige",
+//backgroundColor:"beige",
 flex:1
 
   },
